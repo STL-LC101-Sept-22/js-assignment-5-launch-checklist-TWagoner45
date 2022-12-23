@@ -45,7 +45,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    if(validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty'  || validateInput(fuelLevel) === 'Empty' || validateInput(cargoLevel) === 'Empty') {
         alert('Fill all fields please');
         //cargo & fuel need to be numbers
-    } else if (validateInput(fuelLevel) === 'Not a Number'  || validateInput(cargoLevel) === 'Not a Number'); {
+    } else if (validateInput(fuelLevel) === 'Not a Number'  || validateInput(cargoLevel) === 'Not a Number') {
         alert('Must be a number');
         //pilot & copilot need to be strings
     } else if (validateInput(pilot) === 'Is a Number' || validateInput(copilot) === 'Is a Number') {
