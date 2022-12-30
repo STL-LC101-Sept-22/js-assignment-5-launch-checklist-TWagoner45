@@ -56,19 +56,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = 'hidden';
         let launchStatus = document.getElementById("launchStatus");
         if (fuelLevel < 10000 && cargoLevel <= 10000) {
-            fuelStatus.innerHTML = 'There is not enough fuel for the journey';
+            fuelStatus.innerHTML = 'There is not enough fuel for the launch';
+            cargoLevel.innerHTML = 'Cargo mass low enough to launch'
             list.style.visibility = 'visible';
             launchStatus.innerHTML = 'Shuttle not ready for launch';
             launchStatus.style.color = 'red';
         } else if (fuelLevel >= 10000 && cargoLevel > 10000) {
+            fuelStatus.innerHTML = 'There is enough fuel for the launch'
             cargoStatus.innerHTML = 'There is too much mass for the shuttle to take off';
             list.style.visibility = 'visible';
             launchStatus.innerHTML = 'Shuttle not ready for launch';
             launchStatus.style.color = 'red';  
-        } else if (cargoLevel < 10000 && fuelLevel > 10000) {
-            fuelStatus.innerHTML = 'Fuel level high enough for launch';
-            cargoStatus.innerHTML = 'Cargo mass low enough for launch';
+        } else if (fuelLevel < 10000 && cargoLevel > 10000) {
+            fuelStatus.innerHTML = 'Fuel level not enough for launch';
+            cargoStatus.innerHTML = 'Cargo mass to heavy for launch';
             list.style.visibility = 'visible';
+            launchStatus.style.color = 'red';
+        } else {
+            fuelLevel.innerHTML = "Fuel level high enough for launch";
+            cargoLevel.innerHTML = "Cargo mass low enough for launch";
+            list.style.visibility = 'visible';
+            launchStatus.innerHTML = "Shuttle is ready for launch";
             launchStatus.style.color = 'green';
         }
     }
@@ -78,7 +86,7 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json")
-    .then( function(response) {
+    .then(function(response) {
         return response.json();        
     });
 
