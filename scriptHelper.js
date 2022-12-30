@@ -41,7 +41,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    let copilotStatus = document.getElementById("copilotStatus");
    let fuelStatus = document.getElementById("fuelStatus");
    let cargoStatus = document.getElementById("cargoStatus");
-   let launchStatus = document.getElementById("launchStatus");
+   //let launchStatus = document.getElementById("launchStatus");
    if(validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty'  || validateInput(fuelLevel) === 'Empty' || validateInput(cargoLevel) === 'Empty') {
         alert('Fill all fields please');
         //cargo & fuel need to be numbers
